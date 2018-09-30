@@ -1,0 +1,7 @@
+C:\Users\hp1\source\repos\TestAtm\TestAtm\bin\Debug\TestAtm.exe.config
+C:\Users\hp1\source\repos\TestAtm\TestAtm\bin\Debug\TestAtm.exe
+C:\Users\hp1\source\repos\TestAtm\TestAtm\bin\Debug\TestAtm.pdb
+C:\Users\hp1\source\repos\TestAtm\TestAtm\obj\Debug\TestAtm.csprojResolveAssemblyReference.cache
+C:\Users\hp1\source\repos\TestAtm\TestAtm\obj\Debug\TestAtm.csproj.CoreCompileInputs.cache
+C:\Users\hp1\source\repos\TestAtm\TestAtm\obj\Debug\TestAtm.exe
+C:\Users\hp1\source\repos\TestAtm\TestAtm\obj\Debug\TestAtm.pdb

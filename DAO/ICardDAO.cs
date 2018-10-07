@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestAtm.Classes;
 
 namespace TestAtm.DAO
 {
@@ -12,5 +13,7 @@ namespace TestAtm.DAO
         void Read();
         void Update();
         void Delete(string cardNumber);
+        Card GetCardNumber(string cardNumber);
+        Card GetCardByCode(string cardNumber, string cardCode);
     }
 }

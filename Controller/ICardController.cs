@@ -12,5 +12,7 @@ namespace TestAtm.Controller
         void DeleteCard();
         void Run();
         void Menu();
+        string RandomCardNumber();
+        void Login();
     }
 }

@@ -8,13 +8,12 @@ namespace TestAtm.Classes
 {
     class Card
     {
-
         private string cardNumber;
         private string cvc;
         private string date;
         private string cardCode;
         private double balance;
-   
+
         public string CardNumber
         {
             get
@@ -65,7 +64,7 @@ namespace TestAtm.Classes
             get
             {
                 return balance;
-            }   
+            }
             set
             {
                 balance = value;
@@ -81,5 +80,6 @@ namespace TestAtm.Classes
             Balance = balance;
         }
 
+    
     }
 }

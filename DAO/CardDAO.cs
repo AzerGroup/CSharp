@@ -28,10 +28,22 @@ namespace TestAtm.DAO
         public void Delete(string cardNumber)
         {
             //find card
-            var card = listCards.Find(x => x.CardNumber == cardNumber);
+            var card = listCards.Find(x=>x.CardNumber == cardNumber);
 
             //delete card
             listCards.Remove(card);
+        }
+
+        public Card GetCardByCode(string cardNumber, string cardCode)
+        {
+            var card = listCards.Find(x => x.CardNumber == cardNumber && x.CardCode == cardCode);
+            return card;
+        }
+
+        public Card GetCardNumber(string cardNumber)
+        {
+            var card = listCards.Find(x => x.CardNumber == cardNumber);
+            return card;
         }
 
         public void Read()

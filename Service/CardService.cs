@@ -35,7 +35,23 @@ namespace TestAtm.Service
         public void EditCard()
         {
 
-        } 
+        }
+
+        public bool FindCardNumber(string cardNumber)
+        {
+            if (!string.IsNullOrWhiteSpace(cardNumber))
+            {
+                var card = cardDAO.GetCardNumber(cardNumber);
+                if(card != null)
+                {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         public void GetCards()
         {
@@ -53,6 +69,18 @@ namespace TestAtm.Service
             {
                 return false;
             }
+        }
+
+        public bool FindCardByCode(string cardNumber, string cardCode)
+        {
+            if(!string.IsNullOrWhiteSpace(cardNumber) && !string.IsNullOrWhiteSpace(cardCode))
+            {
+                if(cardDAO.GetCardByCode(cardNumber, cardCode) != null){
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

@@ -20,27 +20,28 @@ namespace TestAtm.Controller
             Console.WriteLine("=======================");
             Console.WriteLine("=      NEW CARD       =");
             Console.WriteLine("=======================");
-            Console.Write("Enter Card Number : ");
-            string cardNumber = Console.ReadLine();
-            Console.Write("Enter CVC         : ");
-            string cvc = Console.ReadLine();
-            Console.WriteLine("Enter Expire Date : ");
-            Console.Write("Enter month : ");
-            string month = Console.ReadLine();
-            Console.Write("Enter year  : ");
-            string year = Console.ReadLine();
+            string month = DateTime.Now.Month.ToString();
+            string year = (DateTime.Now.Year + 4).ToString();
             string date = month + "/" + year;
             Console.Write("Enter Card Code    : ");
             string cardCode = Console.ReadLine();
             Console.Write("Enter Card Balance : ");
             double balance =Convert.ToDouble(Console.ReadLine());
+            string cardNumber = RandomCardNumber();
+            string cvc = RandomCardCvc();
 
             bool result = cardService.AddCard(cardNumber, cvc, date, cardCode, balance);
             if (result)
             {
+                Console.WriteLine($"Card Number      : {cardNumber}");
+                Console.WriteLine($"Card CVC         : {cvc}");
+                Console.WriteLine($"Card Expire Date : {date}");
                 Console.WriteLine("Creating new card is succesfull");
-                System.Threading.Thread.Sleep(2000);
-                Console.Clear();
+                var key =  Console.ReadKey();
+                if(key != null)
+                { 
+                    Console.Clear();
+                }                       
             }
             else
             {
@@ -94,7 +95,8 @@ namespace TestAtm.Controller
                 switch (operate)
                 {
                     case 1:
-
+                        Console.Clear();
+                        Login();
                         break;
                     case 2:
                         Console.Clear();
@@ -112,6 +114,60 @@ namespace TestAtm.Controller
                         break;
                 }
 
+            }
+        }
+        
+        public string RandomCardNumber()
+        {
+            Random random = new Random();
+            string cardNumber = "";
+            for (int i = 0; i < 4; i++)
+            {
+                int ran =  random.Next(1000, 9999);
+                cardNumber += ran.ToString();
+                cardNumber += " ";
+            }
+            if (cardService.FindCardNumber(cardNumber))
+            {
+                RandomCardNumber();
+            }
+            return cardNumber;
+        }
+
+        public string RandomCardCvc()
+        {
+            Random random = new Random();
+            string cvc = random.Next(100, 999).ToString();
+            return cvc;
+        }
+
+        public void Login()
+        {
+
+            Console.WriteLine("=======================");
+            Console.WriteLine("=        LOGIN        =");
+            Console.WriteLine("=======================");
+
+            Console.Write("Enter Card Number : ");
+            string oldNumber = Console.ReadLine();
+            Console.Write("Enter Card Code   : ");
+            string cardCode = Console.ReadLine();
+            string cardNumber = "";
+            for (int i = 0; i < oldNumber.Length; i++)
+            {
+                cardNumber += oldNumber[i];
+                if(i %4 == 3)
+                {
+                    cardNumber += " ";
+                }
+            }
+            if (cardService.FindCardByCode(cardNumber, cardCode))
+            {
+                Console.WriteLine("Access successed");
+            }
+            else
+            {
+                Console.WriteLine("Access denied");
             }
         }
     }

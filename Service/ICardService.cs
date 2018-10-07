@@ -12,6 +12,7 @@ namespace TestAtm.Service
         bool RemoveCard(string cardNumber);
         void EditCard();
         void GetCards();
-
+        bool FindCardNumber(string cardNumber);
+        bool FindCardByCode(string cardNumber, string cardCode);
     }
 }
